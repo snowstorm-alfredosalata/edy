@@ -7,7 +7,7 @@
 ## Edy at a glance
 ```rust
 
-fn double_dynamic(value: Dynamic) -> Result<Dynamic, UnsupportedTypeError> {
+fn double_dynamic(value: Dynamic) -> Result<Dynamic, Error> {
     match value {
         Dynamic::Str(v) => Ok(format!("{v}{v}").into()),
         Dynamic::Int(v) =>  Ok((v*2).into()),
@@ -15,21 +15,21 @@ fn double_dynamic(value: Dynamic) -> Result<Dynamic, UnsupportedTypeError> {
         _ => Err(UnsupportedTypeError { 
                 expected_types: vec![DynamicType::Str, DynamicType::Int, DynamicType::Float], 
                 found_type: value.get_type() 
-            })
+            }.into())
     }
 }
 
 fn main() {
-    let mut my_int = 2i32;
+    let dy_float = 2i32;
 
-    my_int = double_dynamic(my_int.into())
-                    .unwrap()
-                    .try_into()
-                    .unwrap();
-
-    assert_eq!(my_int, 4)
+    if let Ok(Dynamic::Int(v)) = double_dynamic(dy_float.into()) {
+        // use this value somehow...
+    }
+    else {
+        // handle the error
+    }
+    
 }
-
 ```
 
 ### Features
