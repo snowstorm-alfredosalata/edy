@@ -41,7 +41,7 @@ Currently in progress.
 
 ## FAQ
 ### How fast is `edy`?
-I have not run any benchmark, but by desing `edy` has significant advantages over other options based on `Any`, as it will not run any non-needed stack allocation. 
+I have not run any benchmark, but by design `edy` has significant advantages over other options based on `Any`, as it will not run any non-needed stack allocation. 
 This certainly comes at the cost of flexibility.
 
 ### Is it production ready?
