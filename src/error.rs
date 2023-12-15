@@ -49,8 +49,8 @@ impl std::fmt::Display for MissingKeyError {
 
 #[derive(Debug)]
 pub enum Error {
-    DynamicTypeError(TypeError),
-    DynamicMultiTypeError(UnsupportedTypeError),
+    TypeError(TypeError),
+    UnsupportedTypeError(UnsupportedTypeError),
     MissingKeyError(MissingKeyError)
     
 }
@@ -60,8 +60,8 @@ impl std::error::Error for Error {}
 impl std::fmt::Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Error::DynamicTypeError(e) => e.fmt(f),
-            Error::DynamicMultiTypeError(e) => e.fmt(f),
+            Error::TypeError(e) => e.fmt(f),
+            Error::UnsupportedTypeError(e) => e.fmt(f),
             Error::MissingKeyError(e) => e.fmt(f),
         }
     }
@@ -69,12 +69,18 @@ impl std::fmt::Display for Error {
 
 impl From<TypeError> for Error {
     fn from(value: TypeError) -> Self {
-        Error::DynamicTypeError(value)
+        Error::TypeError(value)
     }
 }
 
 impl From<MissingKeyError> for Error {
     fn from(value: MissingKeyError) -> Self {
         Error::MissingKeyError(value)
+    }
+}
+
+impl From<UnsupportedTypeError> for Error {
+    fn from(value: UnsupportedTypeError) -> Self {
+        Error::UnsupportedTypeError(value)
     }
 }
