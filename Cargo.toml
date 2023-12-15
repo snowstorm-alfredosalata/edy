@@ -1,0 +1,16 @@
+[package]
+name = "edy"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "A simple and ergonomic library for handling dynamic-typed values."
+homepage = "https://github.com/snowstorm-alfredosalata/edy"
+repository = "https://github.com/snowstorm-alfredosalata/edy"
+readme = "./README.md"
+
+[dependencies]
+serde = { version = "1.0.193", features=["derive"], optional = true}
+chrono = { version = "0.4.31", optional = true }
+
+[dev-dependencies]
+serde_json = { version = "1.0.108" }
