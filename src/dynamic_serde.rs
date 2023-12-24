@@ -1,3 +1,5 @@
+//! `Serde` implementation for Dynamic
+
 use std::error::Error;
 
 use super::Dynamic;

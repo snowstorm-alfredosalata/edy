@@ -1,3 +1,5 @@
+//! The Map struct, wrapping HashMap<String, Dynamic>.
+
 use std::ops::{Deref, DerefMut};
 
 #[cfg(feature = "serde")]
@@ -6,10 +8,8 @@ use serde::{Deserialize, Serialize};
 use crate::deps::HashMap;
 use crate::prelude::{Dynamic, MissingKeyError};
 
-/// The Map struct wraps and points to an HashMap<String, Dynamic>, exposing ergonomic api to access the underlying data
+/// The Map struct wraps an HashMap<String, Dynamic>, exposing ergonomic api to access the underlying data
 /// with hard types. 
-/// This struct is used to standardize signatures for struct, functions, and messages of structs implementing the Component trait, 
-/// while still allowing variadic values of different types to be passed by deserialization/scripting to said components' operations.
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[derive(Clone, Default, Debug)]
 pub struct Map(HashMap<String, Dynamic>);

@@ -1,10 +1,12 @@
+//! The `Dynamic` enum, the core block of `edy`.
+
 #[cfg(feature = "chrono")]
 use chrono::NaiveDateTime;
 
 use crate::{dynamic_type::DynamicType, map::Map, error::TypeError};
 
-/// The Dynamic enum serves as the main exchange value within the internal api.
-/// It wraps any primitive type, excluding u64, i128 at present implementation, exposing intuitive APIs for type comparison.
+/// The `Dynamic` enum wraps any primitive type, excluding `u64`, `i128` at present implementation, exposing intuitive APIs for type comparison.
+/// It can also wrap more complex and recursive types, such as `Vec<Dynamic>` and `Map`, a wrapper over `HashMap<String, Dynamic>`.
 #[derive(Clone, Debug)]
 pub enum Dynamic {
     Str(String),

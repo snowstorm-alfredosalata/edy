@@ -1,3 +1,5 @@
+//! `edy` error types.
+
 use crate::dynamic_type::DynamicType;
 
 #[derive(Debug)]

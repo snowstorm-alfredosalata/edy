@@ -1,10 +1,11 @@
+//! DynamicType enum. Used for type-comparison of Dynamic values.
+
 use std::fmt::Display;
 
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-/// The DynamicType enum is mainly used for ergonomic type comparison of Dynamic values, as well as for
-/// introducing type constraints in property definition of Components.
+/// The DynamicType enum is mainly used for ergonomic type comparison of Dynamic values.
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub enum DynamicType {
