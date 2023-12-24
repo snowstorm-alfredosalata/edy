@@ -3,7 +3,8 @@ use std::ops::{Deref, DerefMut};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
-use crate::{deps::HashMap, Dynamic, error::MissingKeyError};
+use crate::deps::HashMap;
+use crate::prelude::{Dynamic, MissingKeyError};
 
 /// The Map struct wraps and points to an HashMap<String, Dynamic>, exposing ergonomic api to access the underlying data
 /// with hard types. 

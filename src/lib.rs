@@ -14,9 +14,14 @@ mod deps;
 #[cfg(feature = "serde")]
 mod dynamic_serde;
 
-pub use self::dynamic::*;
-pub use self::dynamic_type::*;
-pub use self::map::*;
+pub mod prelude {
+    pub use super::deps::*;
+
+    pub use super::dynamic::*;
+    pub use super::dynamic_type::*;
+    pub use super::map::*;
+    pub use super::error::*;
+}
 
 #[cfg(test)]
 mod tests;

@@ -1,4 +1,4 @@
-use crate::DynamicType;
+use crate::dynamic_type::DynamicType;
 
 #[derive(Debug)]
 pub struct TypeError {

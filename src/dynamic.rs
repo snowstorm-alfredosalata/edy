@@ -1,7 +1,7 @@
 #[cfg(feature = "chrono")]
 use chrono::NaiveDateTime;
 
-use super::{DynamicType, Map, error::TypeError};
+use crate::{dynamic_type::DynamicType, map::Map, error::TypeError};
 
 /// The Dynamic enum serves as the main exchange value within the internal api.
 /// It wraps any primitive type, excluding u64, i128 at present implementation, exposing intuitive APIs for type comparison.
