@@ -20,15 +20,21 @@ fn double_dynamic(value: Dynamic) -> Result<Dynamic, Error> {
 }
 
 fn main() {
-    let dy_float = 2i32;
+    let dy = 2i32;
+    let v: i32 = double_dynamic(dy.into())
+                    .unwrap()
+                    .try_into()
+                    .unwrap();
 
-    if let Ok(Dynamic::Int(v)) = double_dynamic(dy_float.into()) {
-        // use this value somehow...
-    }
-    else {
-        // handle the error
-    }
-    
+    assert_eq!(4, v);
+
+    let dy = "2".to_string();
+    let v: String = double_dynamic(dy.into())
+                    .unwrap()
+                    .try_into()
+                    .unwrap();
+
+    assert_eq!("22", &v);
 }
 ```
 
