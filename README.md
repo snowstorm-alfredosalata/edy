@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-`edy` is simple and ergonomic library for handling dynamic-typed values, featuring highly-tailorable features, no stack allocations for primitive types, and more.
+`edy` is simple and ergonomic library for handling dynamic-typed values, featuring highly-tailorable features, no heap allocations for primitive types, and more.
 
 ## Edy at a glance
 ```rust
@@ -41,7 +41,7 @@ Currently in progress.
 
 ## FAQ
 ### How fast is `edy`?
-I have not run any benchmark, but by design `edy` has significant advantages over other options based on `Any`, as it will not run any non-needed stack allocation. 
+I have not run any benchmark, but by design `edy` has significant advantages over other options based on `Any`, as it will not run any non-needed heap allocation. 
 This certainly comes at the cost of flexibility.
 
 ### Is it production ready?
@@ -51,4 +51,4 @@ Although the API will likely not change much, the internals are just a draft and
 Simple: **e**num-based **dy**namic. **edy**!
 
 ### Can I contribute?
-Not at the moment, but it'll be certainly possible after I reach a better degree of completion in the internals.
+Not at the moment, but it'll be certainly possible after I reach a better degree of completion and doc coverage in the internals.
