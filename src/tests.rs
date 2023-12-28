@@ -166,3 +166,13 @@ fn test_double_float() {
     }
     
 }
+
+#[test]
+fn test_vec_conversion() {
+    let vec = vec![2i32, 4, 6, 4];
+    let dy_vec: Dynamic = vec.into();
+
+    let vec: Vec<i32> = dy_vec.try_into().unwrap();
+
+    assert_eq!(vec, vec![2i32, 4, 6, 4])
+}

@@ -100,3 +100,34 @@ map_dynamic! {
 
 #[cfg(feature = "chrono")]
 map_dynamic! { NaiveDateTime => Timestamp }
+
+impl<T: Into<Dynamic>> Into<Dynamic> for Vec<T> {
+    fn into(mut self) -> Dynamic {
+        let vec: Vec<Dynamic> = self.drain(..).map(|el| Into::<Dynamic>::into(el)).collect();
+
+        Dynamic::Array(vec)
+    }
+}
+
+impl<T: TryFrom<Dynamic, Error = TypeError>> TryFrom<Dynamic> for Vec<T> {
+    type Error = TypeError;
+
+    fn try_from(value: Dynamic) -> Result<Self, Self::Error> {
+        match value {
+            Dynamic::Array(mut value) => {
+                let mut out: Vec<T> = Vec::default();
+                for v in value.drain(..) {
+                    out.push(v.try_into()?);
+                }
+
+                Ok(out)
+            },
+            _ => Err(
+                TypeError {
+                expected_type: DynamicType::Array,
+                found_type: value.get_type(),
+            }
+            .into()),
+        }
+    }
+}
