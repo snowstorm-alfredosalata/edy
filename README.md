@@ -2,8 +2,9 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Semantic Versioning](https://img.shields.io/badge/Semantic%20Versioning-2.0.0-%234c79c0?logo=semver&logoColor=white)](https://semver.com)
 [![Conventional Commits](https://img.shields.io/badge/Keep%20a%20Changelog-1.1.0-%23e5534b?logo=keepachangelog&logoColor=white)](https://keepachangelog.com/en/1.1.0/)
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![codecov](https://codecov.io/gh/snowstorm-alfredosalata/edy/graph/badge.svg?token=EMTCQB3ANX)](https://codecov.io/gh/snowstorm-alfredosalata/edy)
 
 `edy` is simple and ergonomic library for handling dynamic-typed values, featuring highly-tailorable features, no heap allocations for primitive types, and more.
 
