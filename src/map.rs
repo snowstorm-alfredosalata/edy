@@ -10,8 +10,25 @@ use crate::prelude::{Dynamic, MissingKeyError};
 
 /// The Map struct wraps an HashMap<String, Dynamic>, exposing ergonomic api to access the underlying data
 /// with hard types.
+/// 
+/// ```
+/// use edy::prelude::*;
+/// 
+/// fn main() {
+///     let mut map = Map::default();
+///     let key = "my_int";
+/// 
+///     map.insert(key.to_string(), 1i32.into());
+///     
+///     let my_int: i32 = map.try_get_casted(key).unwrap();
+/// 
+///     assert_eq!(my_int, 1)
+/// }
+/// ```
+/// 
+/// As the Map type is wrapped itself into Dynamic, the Map type can serialize any Json document.
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Clone, PartialEq, Debug)]
+#[derive(Clone, PartialEq, Debug, Default)]
 pub struct Map(HashMap<String, Dynamic>);
 
 impl Map {

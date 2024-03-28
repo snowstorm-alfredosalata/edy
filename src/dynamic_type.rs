@@ -6,6 +6,16 @@ use std::fmt::Display;
 use serde::{Deserialize, Serialize};
 
 /// The DynamicType enum is mainly used for ergonomic type comparison of Dynamic values.
+/// It may be used to construct guard clauses where match statements are not sufficient.
+/// 
+/// ```
+/// use edy::prelude::*;
+/// 
+/// fn main() {
+///     let v: Dynamic = 10i32.into();
+///     assert!(v.get_type() == DynamicType::Int)
+/// }
+/// ```
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum DynamicType {

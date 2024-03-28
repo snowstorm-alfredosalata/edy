@@ -2,6 +2,7 @@
 
 use crate::dynamic_type::DynamicType;
 
+/// `TypeError` should be used when a `Dynamic` function is called on a value with an unexpected underlying type.
 #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct TypeError {
     pub expected_type: DynamicType,
@@ -20,6 +21,8 @@ impl std::fmt::Display for TypeError {
     }
 }
 
+/// `UnsupportedTypeError` should be used when a `Dynamic` function is called on a value with an unexpected underlying type.
+/// It should be favored over `TypeError` when the function supports multiple types.
 #[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct UnsupportedTypeError {
     pub expected_types: Vec<DynamicType>,
@@ -44,6 +47,7 @@ impl std::fmt::Display for UnsupportedTypeError {
     }
 }
 
+/// MissingKeyError is raised when accessing a value inside a `Map` that does not exist.
 #[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct MissingKeyError {
     pub payload_key: String,
@@ -57,6 +61,8 @@ impl std::fmt::Display for MissingKeyError {
     }
 }
 
+
+/// The aggregate edy Error type.
 #[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum Error {
     TypeError(TypeError),

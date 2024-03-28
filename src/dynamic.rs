@@ -7,7 +7,29 @@ use crate::{dynamic_type::DynamicType, error::TypeError, map::Map};
 
 /// The `Dynamic` enum wraps any primitive type, excluding `u64`, `i128` at present implementation, exposing intuitive APIs for type comparison.
 /// It can also wrap more complex and recursive types, such as `Vec<Dynamic>` and `Map`, a wrapper over `HashMap<String, Dynamic>`.
+/// 
+/// With the `serde` feature, the Dynamic enum also has everything needed to map any valid JSON object.
+#[cfg_attr(feature = "serde", doc = r##"
+See this example:
 
+```
+use edy::prelude::*;
+
+fn main() {
+    let to_ser = r#"
+    {
+        "u8": 8, 
+        "i64": -64
+    }
+    "#;
+
+    let map = serde_json::from_str::<Map>(to_ser).unwrap();
+
+    assert!(map.try_get_casted::<u8>("u8").unwrap() == 8);
+    assert!(map.try_get_casted::<i64>("i64").unwrap() == -64);
+}
+```
+"##)]
 #[derive(Clone, PartialEq, Debug)]
 pub enum Dynamic {
     Str(String),
