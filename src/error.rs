@@ -2,7 +2,7 @@
 
 use crate::dynamic_type::DynamicType;
 
-#[derive(Debug)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct TypeError {
     pub expected_type: DynamicType,
     pub found_type: DynamicType,
@@ -20,7 +20,7 @@ impl std::fmt::Display for TypeError {
     }
 }
 
-#[derive(Debug)]
+#[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct UnsupportedTypeError {
     pub expected_types: Vec<DynamicType>,
     pub found_type: DynamicType,
@@ -44,7 +44,7 @@ impl std::fmt::Display for UnsupportedTypeError {
     }
 }
 
-#[derive(Debug)]
+#[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct MissingKeyError {
     pub payload_key: String,
 }
@@ -57,7 +57,7 @@ impl std::fmt::Display for MissingKeyError {
     }
 }
 
-#[derive(Debug)]
+#[derive(Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub enum Error {
     TypeError(TypeError),
     UnsupportedTypeError(UnsupportedTypeError),

@@ -7,7 +7,8 @@ use crate::{dynamic_type::DynamicType, error::TypeError, map::Map};
 
 /// The `Dynamic` enum wraps any primitive type, excluding `u64`, `i128` at present implementation, exposing intuitive APIs for type comparison.
 /// It can also wrap more complex and recursive types, such as `Vec<Dynamic>` and `Map`, a wrapper over `HashMap<String, Dynamic>`.
-#[derive(Clone, Debug)]
+
+#[derive(Clone, PartialEq, Debug)]
 pub enum Dynamic {
     Str(String),
     Int(i64),

@@ -11,7 +11,7 @@ use crate::prelude::{Dynamic, MissingKeyError};
 /// The Map struct wraps an HashMap<String, Dynamic>, exposing ergonomic api to access the underlying data
 /// with hard types.
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[derive(Clone, Default, Debug)]
+#[derive(Clone, PartialEq, Debug)]
 pub struct Map(HashMap<String, Dynamic>);
 
 impl Map {
