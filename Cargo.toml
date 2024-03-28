@@ -5,8 +5,12 @@ edition = "2021"
 license = "MIT"
 description = "A simple and ergonomic library for handling dynamic-typed values."
 homepage = "https://github.com/snowstorm-alfredosalata/edy"
+documentation = "https://docs.rs/edy"
 repository = "https://github.com/snowstorm-alfredosalata/edy"
 readme = "./README.md"
+
+keywords = ["dynamic", "typing", "serialization", "serde"]
+categories = ["encoding", "parsing"]
 
 [dependencies]
 serde = { version = "1.0.193", features=["derive"], optional = true}
