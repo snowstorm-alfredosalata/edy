@@ -109,8 +109,8 @@ fn test_dynamic_default() {
 
 #[cfg(feature = "serde")]
 #[test]
-fn test_serde() {
-    let to_ser = r#"
+fn test_map_serde() {
+    let json_value = r#"
     {
         "u8": 8, 
         "i64": -64, 
@@ -120,7 +120,7 @@ fn test_serde() {
     }
     "#;
 
-    let map = serde_json::from_str::<Map>(to_ser);
+    let map = serde_json::from_str::<Map>(json_value);
 
     assert!(map.is_ok());
 
@@ -140,6 +140,12 @@ fn test_serde() {
 
     let sut = map.try_get_casted::<String>("String");
     assert!(sut.is_ok());
+
+    let ret_json_value = serde_json::to_string(&map).unwrap();
+
+    let re_serialized_map = serde_json::from_str::<Map>(ret_json_value);
+
+    assert_eq!(re_serialized_map, map)
 }
 
 fn double_dynamic(value: Dynamic) -> Result<Dynamic, Error> {
